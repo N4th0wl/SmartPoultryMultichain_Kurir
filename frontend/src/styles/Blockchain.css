@@ -1,0 +1,341 @@
+/* ============================================ */
+/* BLOCKCHAIN PAGE STYLES */
+/* ============================================ */
+
+.blockchain-layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 20px;
+}
+
+/* Chain List */
+.chain-list-card {
+    max-height: calc(100vh - 240px);
+    overflow-y: auto;
+}
+
+.chain-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chain-item {
+    width: 100%;
+    text-align: left;
+    padding: 14px 16px;
+    background: rgba(15, 25, 45, 0.4);
+    border: 1px solid rgba(59, 130, 246, 0.06);
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    color: #c8d7f0;
+    transition: all .15s;
+}
+
+.chain-item:hover {
+    background: rgba(59, 130, 246, 0.06);
+    border-color: rgba(59, 130, 246, 0.15);
+}
+
+.chain-item.selected {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+}
+
+.chain-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.chain-code {
+    font-size: .82rem;
+    font-weight: 600;
+    font-family: monospace;
+}
+
+.chain-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: .75rem;
+    color: rgba(200, 215, 240, 0.4);
+}
+
+/* Chain placeholder */
+.chain-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    color: rgba(200, 215, 240, 0.3);
+    gap: 12px;
+}
+
+.chain-placeholder span {
+    font-size: 2.5rem;
+}
+
+/* Trace detail */
+.trace-detail {
+    animation: fadeIn .2s;
+}
+
+.trace-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 16px;
+}
+
+.trace-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e8edf3;
+    font-family: monospace;
+    margin-bottom: 4px;
+}
+
+.trace-sub {
+    font-size: .82rem;
+    color: rgba(200, 215, 240, 0.5);
+}
+
+/* Validation */
+.trace-validation {
+    margin-bottom: 24px;
+}
+
+.validation-ok {
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(34, 197, 94, 0.08);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    font-size: .88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.validation-err {
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(220, 38, 38, 0.08);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    color: #f87171;
+    font-size: .88rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.trace-section-title {
+    font-size: .9rem;
+    font-weight: 600;
+    color: rgba(200, 215, 240, 0.7);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 16px;
+}
+
+/* Timeline */
+.trace-timeline {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 32px;
+}
+
+.trace-timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, #3b82f6, rgba(59, 130, 246, 0.1));
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -21px;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    background: #3b82f6;
+    border-radius: 50%;
+    border: 2px solid #0d1f3c;
+}
+
+.timeline-content {
+    padding: 12px 16px;
+    background: rgba(15, 25, 45, 0.4);
+    border: 1px solid rgba(59, 130, 246, 0.06);
+    border-radius: 10px;
+}
+
+.timeline-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    gap: 8px;
+}
+
+.timeline-hash {
+    font-family: monospace;
+    font-size: .72rem;
+    color: rgba(200, 215, 240, 0.35);
+}
+
+.timeline-summary {
+    font-size: .85rem;
+    color: #c8d7f0;
+    margin-bottom: 4px;
+}
+
+.timeline-time {
+    font-size: .72rem;
+    color: rgba(200, 215, 240, 0.3);
+}
+
+/* Block type badges */
+[class*="badge-block-"] {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+}
+
+.badge-block-genesis {
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.badge-block-pickup_farm {
+    background: rgba(34, 197, 94, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.badge-block-delivery_processor {
+    background: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.badge-block-pickup_processor {
+    background: rgba(234, 179, 8, 0.1);
+    color: #fbbf24;
+    border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+.badge-block-delivery_retailer {
+    background: rgba(244, 114, 182, 0.1);
+    color: #f472b6;
+    border: 1px solid rgba(244, 114, 182, 0.2);
+}
+
+/* Block cards */
+.block-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.block-card {
+    background: rgba(12, 20, 40, 0.5);
+    border: 1px solid rgba(59, 130, 246, 0.06);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.block-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.block-index {
+    font-weight: 700;
+    font-size: .9rem;
+    color: #3b82f6;
+}
+
+.block-type {
+    font-size: .75rem;
+    color: rgba(200, 215, 240, 0.5);
+    text-transform: uppercase;
+}
+
+.block-hash-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+    font-size: .78rem;
+}
+
+.hash-label {
+    color: rgba(200, 215, 240, 0.4);
+    font-weight: 600;
+    min-width: 36px;
+}
+
+.hash-value {
+    font-family: monospace;
+    color: rgba(200, 215, 240, 0.6);
+    word-break: break-all;
+}
+
+.block-payload {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(5, 10, 20, 0.5);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.block-payload pre {
+    font-family: monospace;
+    font-size: .75rem;
+    color: rgba(200, 215, 240, 0.5);
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-wrap;
+}
+
+@media (max-width: 900px) {
+    .blockchain-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .chain-list-card {
+        max-height: 300px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

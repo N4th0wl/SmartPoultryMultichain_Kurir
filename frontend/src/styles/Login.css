@@ -1,0 +1,168 @@
+/* ============================================ */
+/* LOGIN / REGISTER STYLES - Blue Courier Theme */
+/* ============================================ */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #060d1a 0%, #0a1628 40%, #0d1f3c 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-page::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 80vw;
+    height: 80vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    background: linear-gradient(165deg, rgba(18, 30, 55, 0.9) 0%, rgba(12, 22, 42, 0.85) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 24px;
+    padding: 40px 36px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.4);
+}
+
+.login-brand {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.login-brand-link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3b82f6;
+    text-decoration: none;
+    letter-spacing: -.02em;
+}
+
+.login-brand p {
+    font-size: .85rem;
+    color: rgba(200, 215, 240, 0.55);
+    margin-top: 8px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 16px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: rgba(200, 215, 240, 0.8);
+}
+
+.login-form input,
+.login-form textarea {
+    width: 100%;
+    margin-top: 6px;
+    padding: 12px 16px;
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    border-radius: 12px;
+    background: rgba(10, 18, 35, 0.6);
+    color: #e8edf3;
+    font-family: inherit;
+    font-size: .9rem;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.login-form input:focus,
+.login-form textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+.login-password {
+    position: relative;
+}
+
+.login-password input {
+    padding-right: 64px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(59, 130, 246, 0.7);
+    font-size: .8rem;
+    cursor: pointer;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.login-error {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    color: #fca5a5;
+    font-size: .85rem;
+    margin-bottom: 16px;
+}
+
+.login-submit {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    font-family: inherit;
+    font-size: .95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+    margin-top: 8px;
+}
+
+.login-submit:hover:not(:disabled) {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+    transform: translateY(-1px);
+}
+
+.login-submit:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.login-dialog {
+    text-align: center;
+    margin-top: 20px;
+    font-size: .85rem;
+    color: rgba(200, 215, 240, 0.5);
+}
+
+.login-dialog a {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.login-dialog a:hover {
+    text-decoration: underline;
+}
+
+.login-hint {
+    text-align: center;
+    margin-top: 16px;
+    font-size: .75rem;
+    color: rgba(200, 215, 240, 0.35);
+}
