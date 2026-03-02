@@ -1,11 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import './index.css'
 import './styles/toast.css'
 import { Toaster } from 'react-hot-toast'
 import { AuthProvider } from './context/AuthContext'
-import App from './App.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import DashboardLayout from './pages/DashboardLayout.jsx'
@@ -30,36 +29,36 @@ createRoot(document.getElementById('root')).render(
             toastOptions={{
                 duration: 4000,
                 style: {
-                    background: 'linear-gradient(135deg, rgba(18, 30, 55, 0.98), rgba(12, 22, 42, 0.95))',
+                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(238, 244, 251, 0.95))',
                     backdropFilter: 'blur(12px)',
                     borderRadius: '16px',
                     padding: '16px 20px',
-                    boxShadow: '0 16px 48px rgba(0, 0, 0, 0.3)',
-                    border: '1px solid rgba(59, 130, 246, 0.1)',
+                    boxShadow: '0 16px 48px rgba(13, 27, 62, 0.15)',
+                    border: '1px solid rgba(26, 58, 107, 0.12)',
                     fontSize: '0.95rem',
-                    color: '#e8edf3',
+                    color: '#0d1b3e',
                     maxWidth: '420px',
                 },
                 success: {
                     duration: 3000,
                     iconTheme: {
-                        primary: '#22c55e',
+                        primary: '#16a34a',
                         secondary: '#ffffff',
                     },
                     style: {
-                        background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(22, 163, 74, 0.08))',
-                        border: '1px solid rgba(34, 197, 94, 0.25)',
+                        background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(22, 163, 74, 0.04))',
+                        border: '1px solid rgba(34, 197, 94, 0.2)',
                     },
                 },
                 error: {
                     duration: 5000,
                     iconTheme: {
-                        primary: '#ef4444',
+                        primary: '#dc2626',
                         secondary: '#ffffff',
                     },
                     style: {
-                        background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(220, 38, 38, 0.08))',
-                        border: '1px solid rgba(239, 68, 68, 0.25)',
+                        background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(220, 38, 38, 0.04))',
+                        border: '1px solid rgba(239, 68, 68, 0.2)',
                     },
                 },
                 loading: {
@@ -73,7 +72,7 @@ createRoot(document.getElementById('root')).render(
         <BrowserRouter>
             <AuthProvider>
                 <Routes>
-                    <Route path="/" element={<App />} />
+                    <Route path="/" element={<Navigate to="/login" replace />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
 
@@ -92,6 +91,9 @@ createRoot(document.getElementById('root')).render(
                         <Route path="blockchain" element={<AdminPanelBlockchain />} />
                         <Route path="settings" element={<DashboardSettings />} />
                     </Route>
+
+                    {/* Catch-all: redirect unknown routes to login */}
+                    <Route path="*" element={<Navigate to="/login" replace />} />
                 </Routes>
             </AuthProvider>
         </BrowserRouter>

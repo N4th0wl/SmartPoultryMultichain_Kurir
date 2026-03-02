@@ -4,11 +4,22 @@ import './App.css'
 
 function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [contactName, setContactName] = useState('')
+    const [contactNeed, setContactNeed] = useState('')
 
     const handleLogoClick = (event) => {
         event.preventDefault()
         document.getElementById('home')?.scrollIntoView({ behavior: 'smooth' })
         setIsMenuOpen(false)
+    }
+
+    const handleContactSubmit = (event) => {
+        event.preventDefault()
+        const trimmedName = contactName.trim()
+        const trimmedNeed = contactNeed.trim()
+        const message = `Halo nama saya '${trimmedName || '...'}' saya ingin konsultasi dengan tim SmartPoultry Kurir untuk kebutuhan atau pertanyaan yaitu '${trimmedNeed || '...'}'. Terima Kasih.`
+        const url = `https://wa.me/6287715658420?text=${encodeURIComponent(message)}`
+        window.open(url, '_blank', 'noopener,noreferrer')
     }
 
     return (
@@ -23,22 +34,22 @@ function App() {
                         <span className="nav-link-arrow" aria-hidden="true">↗</span>
                     </a>
                     <a href="#about" onClick={() => setIsMenuOpen(false)}>
-                        <span className="nav-link-text">About</span>
+                        <span className="nav-link-text">About Us</span>
                         <span className="nav-link-arrow" aria-hidden="true">↗</span>
                     </a>
                     <a href="#services" onClick={() => setIsMenuOpen(false)}>
-                        <span className="nav-link-text">Services</span>
+                        <span className="nav-link-text">Our Service</span>
                         <span className="nav-link-arrow" aria-hidden="true">↗</span>
                     </a>
-                    <a href="#blockchain" onClick={() => setIsMenuOpen(false)}>
-                        <span className="nav-link-text">Blockchain</span>
+                    <a href="#contact" onClick={() => setIsMenuOpen(false)}>
+                        <span className="nav-link-text">Contact</span>
                         <span className="nav-link-arrow" aria-hidden="true">↗</span>
                     </a>
-                    <Link className="btn btn-primary topbar-btn mobile-only" to="/register" onClick={() => setIsMenuOpen(false)}>
+                    <Link className="btn btn-primary topbar-btn mobile-only" to="/login" onClick={() => setIsMenuOpen(false)}>
                         Masuk / Daftar
                     </Link>
                 </div>
-                <Link className="btn btn-primary topbar-btn desktop-only" to="/register">
+                <Link className="btn btn-primary topbar-btn desktop-only" to="/login">
                     Masuk / Daftar
                 </Link>
                 <button
@@ -136,7 +147,7 @@ function App() {
 
                 <section id="services" className="section services">
                     <div className="section-heading">
-                        <span>Our Services</span>
+                        <span>Our Service</span>
                         <h2>Layanan pengiriman end-to-end untuk supply chain unggas.</h2>
                     </div>
                     <div className="service-grid">
@@ -199,6 +210,58 @@ function App() {
                         </div>
                     </div>
                 </section>
+
+                <section id="contact" className="section contact">
+                    <div className="contact-card">
+                        <div>
+                            <span>Contact</span>
+                            <h2>Mulai kirim lebih cerdas hari ini.</h2>
+                            <p>
+                                Tim SmartPoultry Kurir siap membantu Anda mulai dari assessment hingga
+                                implementasi sistem pengiriman terintegrasi.
+                            </p>
+                            <div className="contact-info">
+                                <div>
+                                    <strong>Alamat</strong>
+                                    <p>Jl. Logistik No. 5, Bandung</p>
+                                </div>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>kurir@smartpoultry.id</p>
+                                </div>
+                                <div>
+                                    <strong>Telepon</strong>
+                                    <p>+62 812 3456 7890</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form className="contact-form" onSubmit={handleContactSubmit}>
+                            <label>
+                                Nama
+                                <input
+                                    type="text"
+                                    placeholder="Nama lengkap"
+                                    value={contactName}
+                                    onChange={(event) => setContactName(event.target.value)}
+                                    required
+                                />
+                            </label>
+                            <label>
+                                Kebutuhan Anda
+                                <textarea
+                                    rows="4"
+                                    placeholder="Ceritakan kebutuhan pengiriman Anda"
+                                    value={contactNeed}
+                                    onChange={(event) => setContactNeed(event.target.value)}
+                                    required
+                                />
+                            </label>
+                            <button type="submit" className="btn btn-primary">
+                                Kirim Permintaan
+                            </button>
+                        </form>
+                    </div>
+                </section>
             </main>
 
             <footer className="footer">
@@ -216,9 +279,9 @@ function App() {
                     <div className="footer-nav">
                         <h4>Navigasi</h4>
                         <a href="#home">Home</a>
-                        <a href="#about">About</a>
-                        <a href="#services">Services</a>
-                        <a href="#blockchain">Blockchain</a>
+                        <a href="#about">About Us</a>
+                        <a href="#services">Our Service</a>
+                        <a href="#contact">Contact</a>
                     </div>
                 </div>
                 <div className="footer-bottom">

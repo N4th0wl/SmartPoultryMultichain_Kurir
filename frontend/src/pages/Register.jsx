@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 import { authService } from '../services'
 import '../styles/Login.css'
 
 function Register() {
     const navigate = useNavigate()
+    const { isAuthenticated, isAdmin, isLoading } = useAuth()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [namaPerusahaan, setNamaPerusahaan] = useState('')
@@ -13,6 +15,17 @@ function Register() {
     const [showPassword, setShowPassword] = useState(false)
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+
+    // Redirect if already authenticated
+    useEffect(() => {
+        if (!isLoading && isAuthenticated) {
+            if (isAdmin) {
+                navigate('/admin', { replace: true })
+            } else {
+                navigate('/dashboard', { replace: true })
+            }
+        }
+    }, [isAuthenticated, isAdmin, isLoading, navigate])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -32,13 +45,16 @@ function Register() {
         }
     }
 
+    // Show nothing while checking auth status
+    if (isLoading) return null
+
     return (
         <main className="login-page">
             <section className="login-card">
                 <div className="login-brand">
-                    <Link to="/" className="login-brand-link">
+                    <span className="login-brand-link">
                         SmartPoultry Kurir
-                    </Link>
+                    </span>
                     <p>Daftar untuk mengelola pengiriman perusahaan kurir Anda.</p>
                 </div>
                 <form className="login-form" onSubmit={handleSubmit}>
